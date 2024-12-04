@@ -1,5 +1,3 @@
-from collections import deque
-
 DAY = 4
 with open(f'2024/day{DAY}_input.txt') as f:
     lines = f.read().splitlines()
