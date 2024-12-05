@@ -45,7 +45,6 @@ def top_sort(incoming,outgoing,page_numbers):
     while pages_to_process:
         for num in page_numbers:
             if incoming[num] == 0:
-                new_page.append(num)
                 pages_to_process-=1
                 for out in outgoing[num]:
                     incoming[out]-=1
