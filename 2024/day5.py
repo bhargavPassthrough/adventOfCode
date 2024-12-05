@@ -50,6 +50,9 @@ def top_sort(incoming,outgoing,page_numbers):
                     incoming[out]-=1
                 incoming[num]=-1
                 new_page.append(num)
+                page_numbers.remove(num)
+                break
+            
     return new_page
 
 def correct_page(page):
