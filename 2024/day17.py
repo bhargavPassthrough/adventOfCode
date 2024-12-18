@@ -220,14 +220,14 @@ def valid_digit(octal,digit,index,program):
     value = (digit ^ 4 ^ (number//2**(digit^1)) )% 8
     return value == int(program[::-1][index])
 
-def backtrack(octal,index,program):
+def dfs(octal,index,program):
     if index == len(program):
         return is_valid(octal,index,program)
 
     for digit in range(8):
         if valid_digit(octal,digit,index,program): 
             octal[index] = str(digit)
-            if backtrack(octal,index+1,program):
+            if dfs(octal,index+1,program):
                 return True
 
     return False
@@ -237,7 +237,7 @@ def part2():
     program = re.findall('\d+',LINES[4])
     program = ''.join(list(map(str,program)))
     octal = ['0']*len(program)
-    if backtrack(octal,0,program):
+    if dfs(octal,0,program):
         return int(''.join(octal),8)
         
    
