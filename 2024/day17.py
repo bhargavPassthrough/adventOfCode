@@ -157,7 +157,7 @@ OPERATIONS = [
 
 def part1():
     a = int(re.search('\d+',LINES[0])[0])
-    a = int('4526445133267675',8)
+    #a = int('4526445133267675',8)
     b = int(re.search('\d+',LINES[1])[0])
     c = int(re.search('\d+',LINES[2])[0])
     REGISTER_VALUES.set(Register.A,a)
@@ -218,8 +218,7 @@ def is_valid(octal,index,program):
 def valid_digit(octal,digit,index,program):
     number = int(''.join(octal[:index]+[str(digit)]),8)
     value = (digit ^ 4 ^ (number//2**(digit^1)) )% 8
-    if value == int(program[::-1][index]):
-        return value == int(program[::-1][index])
+    return value == int(program[::-1][index])
 
 def backtrack(octal,index,program):
     if index == len(program):
